@@ -11,5 +11,6 @@
 <body>
 	<h1>Cadastro de Produtos</h1>
 	<a href="novo.html" class="botao1">Novo Cadastro</a>
+	<a href="index.html" class="botao1">Página Inicial</a>
 </body>
 </html>

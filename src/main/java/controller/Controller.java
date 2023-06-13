@@ -58,6 +58,13 @@ public class Controller extends HttpServlet {
 		cadastro.setTomb(request.getParameter("tomb"));
 		cadastro.setText(request.getParameter("infor"));
 		cadastro.setValor(request.getParameter("valor"));
+		
+		// invocar o metodo inserirCadastro passando o objeto cadastro
+		dao.inserirCadastro(cadastro);	
+		
+		// redirecionar para cadastro.jsp
+		
+		response.sendRedirect("main");
 	}
 
 }
