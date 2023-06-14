@@ -3,6 +3,10 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.mysql.cj.protocol.Resultset;
 
 public class DAO {
 	/** Modulo de Conecxão **/
@@ -59,6 +63,40 @@ public class DAO {
 
 		} catch (Exception e) {
 			System.out.println(e);
+		}
+	}
+
+	/** CRUD - READ **/
+	public ArrayList<JavaBeans> listarCadastro() {
+		// Criando um objeto para acessar a classe JavaBeans
+		ArrayList<JavaBeans> cadastro = new ArrayList<>();
+
+		String read = "select * from baixa order by nome";
+
+		try {
+			// Abrindo a conecxao com o banco de dados
+
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(read);
+			ResultSet rs = pst.executeQuery();
+
+			// o laço abaixo será executado enquano houver cadastro
+			while (rs.next()) {
+				String idDF = rs.getString(1);
+				String nome = rs.getString(2);
+				String quant = rs.getString(3);
+				String tomb = rs.getString(4);
+				String infor = rs.getString(5);
+				String valor = rs.getString(6);
+
+				// Populando o ArrayList
+				cadastro.add(new JavaBeans(idDF, nome, quant, tomb, infor, valor));
+			}
+			con.close();
+			return cadastro;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
 		}
 	}
 }
