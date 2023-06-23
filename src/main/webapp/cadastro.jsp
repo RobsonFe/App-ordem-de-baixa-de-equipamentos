@@ -25,7 +25,8 @@ ArrayList<JavaBeans> lista = (ArrayList<JavaBeans>) request.getAttribute("cadast
 	<h1>Cadastro de Produtos</h1>
 	<a href="novo.html" class="botao1">Novo Cadastro</a>
 	<a href="index.html" class="botao1">Página Inicial</a>
-	
+	<br>
+	<br>
 	<table id="tabela">
 	<tr>
 	<thead> 
